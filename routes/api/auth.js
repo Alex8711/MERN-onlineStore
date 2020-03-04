@@ -93,8 +93,12 @@ router.post("/register", (req, res) => {
               res.json({
                 user: {
                   _id: user._id,
+                  isAdmin: user.role === 0 ? false : true,
                   name: user.name,
-                  email: user.email, 
+                  email: user.email,
+                  role: user.role,
+                  cart: user.cart,
+                  history: user.history
                 },
                 token: token,
                 registerSuccess: true

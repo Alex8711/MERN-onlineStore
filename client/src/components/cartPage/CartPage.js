@@ -32,6 +32,7 @@ function CartPage() {
   // })
 
   useEffect(() => {
+    if(idArray.length>0){
     axios.get(
           `/api/product/products_by_id?id=${idArray}&type=array`
         ).then(res => {
@@ -48,6 +49,10 @@ function CartPage() {
         setCartDetail(res.data);
         console.log(res.data);
       });
+    }
+    else{
+      setCartDetail([])
+    }
   },[cartDetail.length,user.cart]);
   
   const totalPrice = (cartDetail)=>{
@@ -80,7 +85,7 @@ function CartPage() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {cartDetail.map(item => (
+          {cartDetail.length>0&&cartDetail.map(item => (
             <TableRow key={item._id}>
             <TableCell>{item.title}</TableCell>
               <TableCell><img src={item.imagePath} style={{height:"50px",width:"25px"}}/></TableCell>

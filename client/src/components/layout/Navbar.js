@@ -66,7 +66,7 @@ const Navbar = () => {
               Cart
             
           </IconButton>
-          <IconButton  color="inherit" href="#" onClick={()=>{dispatch(logout())}}>
+          <IconButton  color="inherit" href="/" onClick={()=>{dispatch(logout())}}>
            
              Logout
           
